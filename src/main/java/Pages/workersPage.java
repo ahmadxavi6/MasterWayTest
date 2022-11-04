@@ -17,6 +17,8 @@ public class workersPage {
 	Select license;
 	WebElement submitBtn;
 	WebElement more;
+	WebElement update;
+	WebElement delete;
 
 	
 	public workersPage(WebDriver driver) {
@@ -30,6 +32,7 @@ public class workersPage {
 		this.gender =  new Select(driver.findElement(By.name("gender")));
 		this.license =  new Select(driver.findElement(By.name("licen")));
 		this.submitBtn = driver.findElement(By.xpath("//*[@id=\"root\"]/div[4]/div/div[1]/form/div[9]/button"));
+		
 		
 
 		
@@ -58,8 +61,28 @@ this.gender.selectByValue("None");
 	this.more =driver.findElement(By.xpath("//*[@id=\"table-to-xls\"]/tbody["+x+"]/tr/td[7]/div/a/button"));
 	this.more.click();
 	
+	
+	}
+	public void delete(int x) {
+		this.delete = driver.findElement(By.xpath("//*[@id=\"table-to-xls\"]/tbody["+x+"]/tr/td[7]/div/button[1]"));
+		this.delete.click();
+	}
+	public void clickUpdate(int x) {
+		this.update = driver.findElement(By.xpath("//*[@id=\"table-to-xls\"]/tbody["+x+"]/tr/td[7]/div/button[2]"));
+		this.update.click();
+	}
+	public void update( String name ,String gender , String lices) {
+		
+		this.name.clear();
+		this.name.sendKeys(name);
+		this.gender.selectByValue("None");	
+		this.gender.selectByValue(gender);
+		this.license.selectByValue("None");	
+		this.license.selectByValue(lices);
+		this.submitBtn.click();
 		
 	}
+	
 	
 	
 }

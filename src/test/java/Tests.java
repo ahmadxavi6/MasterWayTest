@@ -35,9 +35,10 @@ import Pages.*;
 
 public class Tests {
 	WebDriver driver;
-    
-	int x =1;
 	TakeScreenShot takeScr;
+
+	int x =1;
+
 	ArrayList<String> outputHeaders = new ArrayList<String>();
 	ArrayList<ArrayList<String>> outputData = new ArrayList<ArrayList<String>>();
 	@BeforeSuite
@@ -45,6 +46,7 @@ public class Tests {
 //		driver = OpenBrowsers.openchromeWithOptions();
 		driver = OpenBrowsers.openBrowser("chrome");
 		takeScr = new TakeScreenShot(driver);
+	
 		driver.manage().window().maximize();
 		Thread.sleep(500);
 		driver.get("https://vigorous-meninsky-e72496.netlify.app/");
@@ -101,7 +103,30 @@ Thread.sleep(4000);
 
 	
 	}
-
+	@Test
+public void updateAndDeleteTest() throws InterruptedException, IOException {
+		Thread.sleep(4000);
+		HomePage home = new HomePage(driver);
+		home.workers();
+		
+		workersPage workers = new workersPage(driver);
+		Thread.sleep(1000);
+		takeScr.takeScreenShot("BeforeDeleteAndUpdate.png");
+		workers.delete(1);
+		driver.switchTo().alert().accept();
+	
+		Thread.sleep(1000);
+		takeScr.takeScreenShot("afterDelete.png");
+		workers.clickUpdate(1);
+		Thread.sleep(5000);
+		workers.update( "eissa" , "Male" , "Taxi (D1)");
+		Thread.sleep(4000);
+		takeScr.takeScreenShot("afterUpdate.png");
+		
+		
+		
+}
+	
 //	@AfterSuite
 //	public void afterSuite() {
 //		driver.quit();
