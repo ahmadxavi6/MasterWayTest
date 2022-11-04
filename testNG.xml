@@ -1,0 +1,12 @@
+<suite name="Master Way Test">
+
+  <test name="Master Way Test" >
+
+    <classes>
+       <class name="Tests" />
+    </classes>
+  </test>
+  
+
+  
+</suite>
