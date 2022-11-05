@@ -6,30 +6,15 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
-import java.util.concurrent.TimeUnit;
-
-import org.apache.commons.io.FileUtils;
-import org.openqa.selenium.By;
-
-
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-
 import org.testng.Assert;
 import org.testng.annotations.AfterSuite;
-import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-
-
-
 import Core.*;
-
-
-
 import Pages.*;
-import io.qameta.allure.Allure;
+
 
 
 
@@ -89,17 +74,15 @@ public class Tests {
 	}
 	@Test(dataProvider = "getData")
 	public void addWorkers(String ID , String name , String email , String number , String address,String age ,String gender , String license) throws IOException, InterruptedException {
-Thread.sleep(4000);
-		HomePage home = new HomePage(driver);
+    Thread.sleep(4000);
+	HomePage home = new HomePage(driver);
 	home.workers();
 	workersPage workers = new workersPage(driver);
-	
 	workers.addWorker(ID, name, email, number, address, age, gender, license);
 	Thread.sleep(5000);
     workers.more(x);
     Thread.sleep(5000);
     workerPage worker = new workerPage(driver);
-
     Thread.sleep(1000);
     Assert.assertEquals(worker.name.contains(name), true);
     Assert.assertEquals(worker.email.contains(email), true);
@@ -108,24 +91,18 @@ Thread.sleep(4000);
     Assert.assertEquals(worker.gender.contains(gender), true);
     Assert.assertEquals(worker.license.contains(license), true);
     Assert.assertEquals(worker.age.contains(age), true);
-  
-
     x++;
-
-	
 	}
 	@Test
 public void updateAndDeleteTest() throws InterruptedException, IOException {
 		Thread.sleep(4000);
 		HomePage home = new HomePage(driver);
 		home.workers();
-		
 		workersPage workers = new workersPage(driver);
 		Thread.sleep(1000);
 		takeScr.takeScreenShot("BeforeDeleteAndUpdate.png");
 		workers.delete(1);
 		driver.switchTo().alert().accept();
-	
 		Thread.sleep(4000);
 		takeScr.takeScreenShot("afterDelete.png");
 		workers.clickUpdate(1);
@@ -156,25 +133,22 @@ public void updateAndDeleteTest() throws InterruptedException, IOException {
 			vehciles.addVehicle("Toyata", "Coralla", "2007", "11112023",	"11102025");
 			Thread.sleep(5000);
 			takeScr.takeScreenShot("AfterAddNewCar.png");
-			
 			Table vehicleTable = new Table(driver,vehciles.table);
 			Thread.sleep(4000);
-	
 			int lastCar = vehicleTable.getRowNumber();
-			
 			vehciles.more(lastCar);
 			Thread.sleep(5000);
 			vehiclePage vehicle = new vehiclePage(driver);
-			 Assert.assertEquals(vehicle.man.contains("Toyata"), true);
-			  Assert.assertEquals(vehicle.model.contains( "Coralla"), true);
-			  Assert.assertEquals(vehicle.year.contains("2007"), true);
-			  Assert.assertEquals(vehicle.licen.contains("2023-11-11"), true);
-			  Assert.assertEquals(vehicle.insu.contains("2025-11-10"), true);
-			  home.vehicles();
+		    Assert.assertEquals(vehicle.man.contains("Toyata"), true);
+		    Assert.assertEquals(vehicle.model.contains( "Coralla"), true);
+		    Assert.assertEquals(vehicle.year.contains("2007"), true);
+			Assert.assertEquals(vehicle.licen.contains("2023-11-11"), true);
+			Assert.assertEquals(vehicle.insu.contains("2025-11-10"), true);
+			home.vehicles();
 			Thread.sleep(5000);
-			 vehciles = new vehcilesPage(driver);
-			 vehicleTable = new Table(driver,vehciles.table);
-			 lastCar = vehicleTable.getRowNumber();
+			vehciles = new vehcilesPage(driver);
+			vehicleTable = new Table(driver,vehciles.table);
+			lastCar = vehicleTable.getRowNumber();
 			vehciles.clickUpdate(lastCar);
 			Thread.sleep(4000);
 			vehciles.update("Ferrari" , "Fr" , "2021","15122025" , "11032030");
@@ -185,7 +159,6 @@ public void updateAndDeleteTest() throws InterruptedException, IOException {
 			driver.switchTo().alert().accept();
 			Thread.sleep(4000);
 			takeScr.takeScreenShot("afterDeletTheAddedCar.png");
-			
 		for(int i =0 ;i<lastCar-1;i++) {
 			ArrayList<String> currOutput = new ArrayList<String>();
 			currOutput.add(vehicleTable.getCellValue(i, "Manufacturer"));
@@ -224,7 +197,6 @@ public void updateAndDeleteTest() throws InterruptedException, IOException {
 		Thread.sleep(1000);
 		LoginPage login = new LoginPage(driver);
 		login.login("test@test.com","123");
-		
 		Thread.sleep(1000);
 		home = new HomePage(driver);
 		home.change();
@@ -312,7 +284,6 @@ public void updateAndDeleteTest() throws InterruptedException, IOException {
 		takeScr.takeScreenShot("AfterAddNewBudgets.png");
 		Table budgetTable = new Table(driver,budgets.table);
 		Thread.sleep(4000);
-
 		int lastbudget = budgetTable.getRowNumber();
 		budgets.clickUpdate(lastbudget);
 		Thread.sleep(4000);
