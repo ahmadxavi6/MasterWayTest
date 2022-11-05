@@ -52,7 +52,7 @@ public class Tests {
 		
 		takeScr = new TakeScreenShot(driver);
 	
-		driver.manage().window().maximize();
+//		driver.manage().window().maximize();
 		outputHeaders.add("Manufacturer");
 		outputHeaders.add("Model");
 		outputHeaders.add("Year");
