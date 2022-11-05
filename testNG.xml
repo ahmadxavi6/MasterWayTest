@@ -1,6 +1,6 @@
 <suite name="Master Way Test">
 
-  <test name="Master Way Test" >
+  <test name="Master Way Test" preserve-order="true" >
 
     <classes>
        <class name="Tests" />

@@ -18,7 +18,7 @@ public class Table {
 	public int getColumnsNumber() {
 		List<WebElement> headers = this.getHeadersElements();
 		for(int i=0;i<headers.size();i++) {
-			System.out.println(headers.get(i).getText());
+			
 		}
 		int headrs_num = headers.size();
 		return headrs_num;
