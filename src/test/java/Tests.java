@@ -139,6 +139,7 @@ public void updateAndDeleteTest() throws InterruptedException, IOException {
 			workers.delete(1);
 			driver.switchTo().alert().accept();
 			workersNum--;
+			Thread.sleep(4000);
 		}
 		
 		
