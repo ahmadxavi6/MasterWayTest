@@ -19,6 +19,7 @@ public class workersPage {
 	WebElement more;
 	WebElement update;
 	WebElement delete;
+	public WebElement table;
 
 	
 	public workersPage(WebDriver driver) {
@@ -32,6 +33,7 @@ public class workersPage {
 		this.gender =  new Select(driver.findElement(By.name("gender")));
 		this.license =  new Select(driver.findElement(By.name("licen")));
 		this.submitBtn = driver.findElement(By.xpath("//*[@id=\"root\"]/div[4]/div/div[1]/form/div[9]/button"));
+		this.table = driver.findElement(By.id("table-to-xls"));
 		
 		
 

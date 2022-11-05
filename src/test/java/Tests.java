@@ -133,6 +133,12 @@ public void updateAndDeleteTest() throws InterruptedException, IOException {
 		workers.update( "eissa" , "Male" , "Taxi (D1)");
 		Thread.sleep(4000);
 		takeScr.takeScreenShot("afterUpdate.png");
+		Table workerTable = new Table(driver,workers.table);
+		int workersNum =  workerTable.getRowNumber();
+		while(workersNum>1) {
+			workers.delete(1);
+			driver.switchTo().alert().accept();
+		}
 		
 		
 		
