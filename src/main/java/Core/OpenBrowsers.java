@@ -22,7 +22,7 @@ public class OpenBrowsers {
 		chromePrefs.put("download.default_directory", file.getAbsolutePath());
 		ChromeOptions options = new ChromeOptions();
 		options.setExperimentalOption("prefs", chromePrefs);
-		options.addArguments("--start-maximized");
+		options.addArguments("--window-size=1920,1080");
 		options.addArguments("--headless");
 		options.addArguments("--disable-infobars");
 
