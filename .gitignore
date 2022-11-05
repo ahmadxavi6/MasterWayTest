@@ -15,7 +15,7 @@ test-output
 .project
 # JDT-specific (Eclipse Java Development Tools)
 .classpath
-allure-results
+
 # JPEG
 *.jpg
 *.jpeg
