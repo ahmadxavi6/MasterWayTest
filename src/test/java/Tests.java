@@ -145,7 +145,7 @@ public void updateAndDeleteTest() throws InterruptedException, IOException {
 			vehcilesPage vehciles = new vehcilesPage(driver);
 			Thread.sleep(5000);
 			takeScr.takeScreenShot("BeforeAddNewCar.png");
-			vehciles.addVehicle("Toyata", "Coralla", "2007", "17112023",	"11102025");
+			vehciles.addVehicle("Toyata", "Coralla", "2007", "11112023",	"11102025");
 			Thread.sleep(5000);
 			takeScr.takeScreenShot("AfterAddNewCar.png");
 			
@@ -160,8 +160,8 @@ public void updateAndDeleteTest() throws InterruptedException, IOException {
 			 Assert.assertEquals(vehicle.man.contains("Toyata"), true);
 			  Assert.assertEquals(vehicle.model.contains( "Coralla"), true);
 			  Assert.assertEquals(vehicle.year.contains("2007"), true);
-			  Assert.assertEquals(vehicle.licen.contains("2023-11-17"), true);
-			  Assert.assertEquals(vehicle.insu.contains("2025-10-11"), true);
+			  Assert.assertEquals(vehicle.licen.contains("2023-12-11"), true);
+			  Assert.assertEquals(vehicle.insu.contains("2025-11-10"), true);
 			  home.vehicles();
 			Thread.sleep(5000);
 			 vehciles = new vehcilesPage(driver);
