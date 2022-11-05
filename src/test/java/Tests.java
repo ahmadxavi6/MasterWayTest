@@ -160,7 +160,7 @@ public void updateAndDeleteTest() throws InterruptedException, IOException {
 			 Assert.assertEquals(vehicle.man.contains("Toyata"), true);
 			  Assert.assertEquals(vehicle.model.contains( "Coralla"), true);
 			  Assert.assertEquals(vehicle.year.contains("2007"), true);
-			  Assert.assertEquals(vehicle.licen.contains("2023-12-11"), true);
+			  Assert.assertEquals(vehicle.licen.contains("2023-11-11"), true);
 			  Assert.assertEquals(vehicle.insu.contains("2025-11-10"), true);
 			  home.vehicles();
 			Thread.sleep(5000);
