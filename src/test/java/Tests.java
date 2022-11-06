@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.JavascriptExecutor;
 import org.testng.Assert;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
@@ -46,6 +47,8 @@ public class Tests {
 	
 		Thread.sleep(500);
 		driver.get("https://vigorous-meninsky-e72496.netlify.app/");
+                JavascriptExecutor js = (JavascriptExecutor)driver;
+		js.executeScript("document.body.style.transform='scale(0.67, 0.67)';");
 		FileReader readFile=new FileReader("cred.properities");
 		Properties prop= new Properties();
 		prop.load(readFile);
