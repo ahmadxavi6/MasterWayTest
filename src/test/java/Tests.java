@@ -32,8 +32,8 @@ public class Tests {
 	ArrayList<ArrayList<String>> outputData = new ArrayList<ArrayList<String>>();
 	@BeforeSuite
 	public void beforeSuite() throws InterruptedException, FileNotFoundException, IOException {
-		driver = OpenBrowsers.openchromeWithOptions();
-//		driver = OpenBrowsers.openBrowser("chrome");
+//		driver = OpenBrowsers.openchromeWithOptions();
+		driver = OpenBrowsers.openBrowser("chrome");
 		
 		takeScr = new TakeScreenShot(driver);
 	
@@ -192,12 +192,12 @@ public void updateAndDeleteTest() throws InterruptedException, IOException {
 		home.change();
 		changePassPage change = new changePassPage(driver);
 		change.change("123");
-		Thread.sleep(2000);
+		Thread.sleep(4000);
 		home.logout();
-		Thread.sleep(1000);
+		Thread.sleep(4000);
 		LoginPage login = new LoginPage(driver);
 		login.login("test@test.com","123");
-		Thread.sleep(1000);
+		Thread.sleep(4000);
 		home = new HomePage(driver);
 		home.change();
 		change = new changePassPage(driver);
