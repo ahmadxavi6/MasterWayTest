@@ -21,8 +21,8 @@ public class Tests {
 	ArrayList<ArrayList<String>> outputData = new ArrayList<ArrayList<String>>();
 	@BeforeSuite
 	public void beforeSuite() throws InterruptedException, FileNotFoundException, IOException {
-//		driver = OpenBrowsers.openchromeWithOptions();
-		driver = OpenBrowsers.openBrowser("chrome");
+		driver = OpenBrowsers.openchromeWithOptions();
+//		driver = OpenBrowsers.openBrowser("chrome");
 		takeScr = new TakeScreenShot(driver);
 		driver.manage().window().maximize();
 		outputHeaders.add("Manufacturer");
