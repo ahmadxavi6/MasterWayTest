@@ -297,7 +297,7 @@ public void updateAndDeleteTest() throws InterruptedException, IOException {
 				header[i] = outputHeaders.get(i);
 			}
 			WriteCsvFile.writeDataLineByLine("budgets.csv", data, header);
-			AttachFiles.attachCsv("budget.csv", "Budget");
+			AttachFiles.attachCsv("budgets.csv", "Budget");
 
 	}
 	@AfterSuite
