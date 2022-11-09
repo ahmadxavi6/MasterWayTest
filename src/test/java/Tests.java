@@ -1,5 +1,3 @@
-
-
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
@@ -15,35 +13,23 @@ import org.testng.annotations.Test;
 import Core.*;
 import Pages.*;
 
-
-
-
-
-
-
-
 public class Tests {
 	WebDriver driver;
 	TakeScreenShot takeScr;
-
 	int x =1;
-
 	ArrayList<String> outputHeaders = new ArrayList<String>();
 	ArrayList<ArrayList<String>> outputData = new ArrayList<ArrayList<String>>();
 	@BeforeSuite
 	public void beforeSuite() throws InterruptedException, FileNotFoundException, IOException {
 //		driver = OpenBrowsers.openchromeWithOptions();
 		driver = OpenBrowsers.openBrowser("chrome");
-		
 		takeScr = new TakeScreenShot(driver);
-	
 		driver.manage().window().maximize();
 		outputHeaders.add("Manufacturer");
 		outputHeaders.add("Model");
 		outputHeaders.add("Year");
 		outputHeaders.add("License");
 		outputHeaders.add("Insurance");
-	
 		Thread.sleep(500);
 		driver.get("https://vigorous-meninsky-e72496.netlify.app/");
 		FileReader readFile=new FileReader("cred.properities");
@@ -51,17 +37,12 @@ public class Tests {
 		prop.load(readFile);
 		String email = prop.getProperty("email");
 		String password = prop.getProperty("password");
-		
-	
 		LoginPage login = new LoginPage(driver);
 		login.login(email,password);
-	
-		
 	}
 
 	@DataProvider
 	public static Object[][] getData() throws Exception{
-
 		List<String[]> lines = ReadCsvFile.readAllLines("workers.csv");
 		lines.remove(0);
 		Object[][] data = new Object[lines.size()][lines.get(0).length];
@@ -118,9 +99,6 @@ public void updateAndDeleteTest() throws InterruptedException, IOException {
 			workersNum--;
 			Thread.sleep(4000);
 		}
-		
-		
-		
 }
 	@Test
 	public void vehicles() throws InterruptedException, IOException {
@@ -181,6 +159,8 @@ public void updateAndDeleteTest() throws InterruptedException, IOException {
 			header[i] = outputHeaders.get(i);
 		}
 		WriteCsvFile.writeDataLineByLine("vehciles.csv", data, header);
+		AttachFiles.attachCsv("vehciles.csv", "Vehciles");
+		
 		
 			
 			
@@ -219,7 +199,6 @@ public void updateAndDeleteTest() throws InterruptedException, IOException {
 		Table adminsTable = new Table(driver,admins.table);
 		Thread.sleep(4000);
 		 int adminNum = adminsTable.getRowNumber();
-			
 			for(int i =0 ;i<adminNum;i++) {
 				ArrayList<String> currOutput = new ArrayList<String>();
 				currOutput.add(adminsTable.getCellValue(i, "ID"));
@@ -242,6 +221,7 @@ public void updateAndDeleteTest() throws InterruptedException, IOException {
 				header[i] = outputHeaders.get(i);
 			}
 			WriteCsvFile.writeDataLineByLine("admins.csv", data, header);
+			AttachFiles.attachCsv("admins.csv", "Admins");
 			takeScr.takeScreenShot("BeforeAddNewAdmin.png");
 			admins.addAdmin("123456789", "rasha", "rasha@techilc.com", "1234567890", "25");
 			Thread.sleep(5000);
@@ -295,8 +275,6 @@ public void updateAndDeleteTest() throws InterruptedException, IOException {
 		driver.switchTo().alert().accept();
 		Thread.sleep(4000);
 		takeScr.takeScreenShot("afterDeletTheAddedBudgetr.png");
-	
-			
 			for(int i =0 ;i<lastbudget-1;i++) {
 				ArrayList<String> currOutput = new ArrayList<String>();
 				currOutput.add(budgetTable.getCellValue(i, "Name"));
@@ -319,9 +297,8 @@ public void updateAndDeleteTest() throws InterruptedException, IOException {
 				header[i] = outputHeaders.get(i);
 			}
 			WriteCsvFile.writeDataLineByLine("budgets.csv", data, header);
-		
-		
-		
+			AttachFiles.attachCsv("budget.csv", "Budget");
+
 	}
 	@AfterSuite
 	public void afterSuite() {
